@@ -10,7 +10,7 @@ test.describe('Sauce Demo UI', () => {
     const inventoryPage = new InventoryPage(page);
     const checkoutPage = new CheckoutPage(page);
 
-    await loginPage.goto();
+    await loginPage.gotoUrl();
     await loginPage.login(users.standard.username, users.standard.password);
 
     await inventoryPage.assertInventoryLoaded();
