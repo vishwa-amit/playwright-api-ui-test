@@ -22,4 +22,14 @@ test.describe('Sauce Demo UI', () => {
     await checkoutPage.fillCheckoutInfo('John', 'Doe', '12345');
     await checkoutPage.clickContinue();
   });
+
+  test('user cannot login with invalid credentials', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+
+    await loginPage.gotoUrl();
+    await loginPage.login(users.invalid.username, users.invalid.password);
+
+    await loginPage.assertLoginError('Epic sadface: Username and password do not match any user in this service');
+  });
 });
+
